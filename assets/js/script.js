@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var tasks={};
+    var tasks= [];
 
     //listen for the save button
     $(".saveBtn").on("click", function(){
@@ -7,7 +7,11 @@ $(document).ready(function(){
         var time = $(this).parent().attr("id");
         var dateAdd = moment().format("dddd, MMMM Do");
 
-        tasks.push({description:value, time: time, date: dateAdd});
+        tasks = {
+            value:"",
+            time:"",
+            dateAdd: "",
+        }
 
         localStorage.setItem("tasks", JSON.stringify(tasks));
     });
@@ -66,7 +70,7 @@ $(document).ready(function(){
   //load saved data from localStorage
   var savedTasks = JSON.parse(localStorage.getItem("tasks"));
 
-  if(savedTasks !==null){
+  if(savedTasks !== null){
       tasks = savedTasks;
   }
 
